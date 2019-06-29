@@ -2,3 +2,5 @@ obj/
 packages/
 bin/
 *.nupkg
+/.vs/PoshConsole/v16/Server/sqlite3
+/.vs/PoshConsole/v16
