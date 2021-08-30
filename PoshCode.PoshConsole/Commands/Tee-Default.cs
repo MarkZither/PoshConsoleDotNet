@@ -33,7 +33,9 @@ namespace PoshCode.Commands
         protected override void ProcessRecord()
         {
             if (!_handled)
+            {
                 _isFirst = _handled = true;
+            }
 
             // All we do is passthru the input, and call the base Out-Default
             WriteObject(InputObject, false);

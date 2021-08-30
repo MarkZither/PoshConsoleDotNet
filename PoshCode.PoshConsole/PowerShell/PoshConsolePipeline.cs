@@ -61,7 +61,10 @@ namespace PoshCode.PowerShell
                 more = enumerator.MoveNext();
                 var script = cmd.IsScript && more;
 
-                if (script) output.Append("&{ ");
+                if (script)
+                {
+                    output.Append("&{ ");
+                }
 
                 output.Append(cmd.CommandText);
                 foreach (var param in cmd.Parameters)

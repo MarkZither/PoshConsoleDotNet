@@ -36,17 +36,24 @@ namespace PoshCode.Controls
 
       public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
       {
-         if (value == null || !(value is Color)) return Colors.White;
-         if (Alpha != null) { return ((Color)value).Invert(Alpha.Value); }
+         if (value == null || !(value is Color))
+            {
+                return Colors.White;
+            }
+
+            if (Alpha != null) { return ((Color)value).Invert(Alpha.Value); }
           return ((Color)value).Invert();
       }
 
       public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
       {
 
-         if (value == null || !(value is Color)) return Colors.White;
+         if (value == null || !(value is Color))
+            {
+                return Colors.White;
+            }
 
-         return ((Color)value).Invert();
+            return ((Color)value).Invert();
 
       }
    }
@@ -57,16 +64,23 @@ namespace PoshCode.Controls
 
       public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
       {
-          if (value == null || !(value is Color)) return Brushes.White;
-          return new SolidColorBrush((Color)value);
+          if (value == null || !(value is Color))
+            {
+                return Brushes.White;
+            }
+
+            return new SolidColorBrush((Color)value);
       }
 
        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
       {
 
-         if (value == null || !(value is SolidColorBrush)) return Colors.White;
+         if (value == null || !(value is SolidColorBrush))
+            {
+                return Colors.White;
+            }
 
-         return ((SolidColorBrush)value).Color;
+            return ((SolidColorBrush)value).Color;
 
       }
    }
@@ -89,17 +103,23 @@ namespace PoshCode.Controls
 
       public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
       {
-         if (value == null || !(value is Color)) return Brushes.White;
+         if (value == null || !(value is Color))
+            {
+                return Brushes.White;
+            }
 
-         if (Alpha != null) { return new SolidColorBrush(((Color)value).Invert(Alpha.Value)); }
+            if (Alpha != null) { return new SolidColorBrush(((Color)value).Invert(Alpha.Value)); }
           return new SolidColorBrush(((Color)value).Invert());
       }
 
       public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
       {
-         if (value == null || !(value is SolidColorBrush)) return Colors.White;
+         if (value == null || !(value is SolidColorBrush))
+            {
+                return Colors.White;
+            }
 
-         return ((SolidColorBrush)value).Color.Invert();
+            return ((SolidColorBrush)value).Color.Invert();
       }
    }
 }

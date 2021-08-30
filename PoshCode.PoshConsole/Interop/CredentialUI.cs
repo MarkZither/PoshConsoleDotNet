@@ -201,7 +201,9 @@ namespace PoshCode.Interop
         public static PromptCredentialsResult PromptForWindowsCredentials(PromptForWindowsCredentialsOptions options, string userName, string password)
         {
             if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
+            {
                 return PromptForWindowsCredentialsInternal<PromptCredentialsResult>(options, null, null);
+            }
 
             using (var userNameS = new SecureString())
             using (var passwordS = new SecureString())
@@ -209,12 +211,16 @@ namespace PoshCode.Interop
                 if (!string.IsNullOrEmpty(userName))
                 {
                     foreach (var c in userName)
+                    {
                         userNameS.AppendChar(c);
+                    }
                 }
                 if (!string.IsNullOrEmpty(password))
                 {
                     foreach (var c in password)
+                    {
                         passwordS.AppendChar(c);
+                    }
                 }
 
                 userNameS.MakeReadOnly();
@@ -310,9 +316,15 @@ namespace PoshCode.Interop
                 if (userName != null || password != null)
                 {
                     if (userName == null)
+                    {
                         userName = new SecureString();
+                    }
+
                     if (password == null)
+                    {
                         password = new SecureString();
+                    }
+
                     userNamePtr = Marshal.SecureStringToCoTaskMemUnicode(userName);
                     passwordPtr = Marshal.SecureStringToCoTaskMemUnicode(password);
                 }
@@ -382,13 +394,24 @@ namespace PoshCode.Interop
             finally
             {
                 if (inAuthBuffer != IntPtr.Zero)
+                {
                     Marshal.ZeroFreeCoTaskMemUnicode(inAuthBuffer);
+                }
+
                 if (outAuthBuffer != IntPtr.Zero)
+                {
                     Marshal.ZeroFreeCoTaskMemUnicode(outAuthBuffer);
+                }
+
                 if (userNamePtr != IntPtr.Zero)
+                {
                     Marshal.ZeroFreeCoTaskMemUnicode(userNamePtr);
+                }
+
                 if (passwordPtr != IntPtr.Zero)
+                {
                     Marshal.ZeroFreeCoTaskMemUnicode(passwordPtr);
+                }
             }
         }
         #endregion
@@ -468,12 +491,16 @@ namespace PoshCode.Interop
                 if (!string.IsNullOrEmpty(userName))
                 {
                     foreach (var c in userName)
+                    {
                         userNameS.AppendChar(c);
+                    }
                 }
                 if (!string.IsNullOrEmpty(password))
                 {
                     foreach (var c in password)
+                    {
                         passwordS.AppendChar(c);
+                    }
                 }
 
                 userNameS.MakeReadOnly();
@@ -555,11 +582,19 @@ namespace PoshCode.Interop
         private static T PromptForCredentialsInternal<T>(PromptForCredentialsOptions options, SecureString userName, SecureString password) where T : class, IPromptCredentialsResult
         {
             if (options == null)
+            {
                 throw new ArgumentNullException(nameof(options));
+            }
+
             if (userName != null && (userName.Length > NativeMethods.CREDUI_MAX_USERNAME_LENGTH))
+            {
                 throw new ArgumentOutOfRangeException(nameof(userName), "CREDUI_MAX_USERNAME_LENGTH");
+            }
+
             if (password != null && (password.Length > NativeMethods.CREDUI_MAX_PASSWORD_LENGTH))
+            {
                 throw new ArgumentOutOfRangeException(nameof(password), "CREDUI_MAX_PASSWORD_LENGTH");
+            }
 
             var creduiInfo = new NativeMethods.CREDUI_INFO()
             {
@@ -645,9 +680,14 @@ namespace PoshCode.Interop
             finally
             {
                 if (userNamePtr != IntPtr.Zero)
+                {
                     Marshal.ZeroFreeCoTaskMemUnicode(userNamePtr);
+                }
+
                 if (passwordPtr != IntPtr.Zero)
+                {
                     Marshal.ZeroFreeCoTaskMemUnicode(passwordPtr);
+                }
             }
         }
         #endregion
@@ -781,7 +821,10 @@ namespace PoshCode.Interop
                 set
                 {
                     if (value.Length > NativeMethods.CREDUI_MAX_CAPTION_LENGTH)
+                    {
                         throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+
                     _caption = value;
                 }
             }
@@ -791,7 +834,10 @@ namespace PoshCode.Interop
                 set
                 {
                     if (value.Length > NativeMethods.CREDUI_MAX_MESSAGE_LENGTH)
+                    {
                         throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+
                     _message = value;
                 }
             }
@@ -803,9 +849,15 @@ namespace PoshCode.Interop
             public PromptForWindowsCredentialsOptions(string caption, string message)
             {
                 if (string.IsNullOrEmpty(caption))
+                {
                     throw new ArgumentNullException(nameof(caption));
+                }
+
                 if (string.IsNullOrEmpty(message))
+                {
                     throw new ArgumentNullException(nameof(message));
+                }
+
                 Caption = caption;
                 Message = message;
                 Flags = PromptForWindowsCredentialsFlag.CREDUIWIN_GENERIC;
@@ -824,7 +876,10 @@ namespace PoshCode.Interop
                 set
                 {
                     if (value.Length > NativeMethods.CREDUI_MAX_CAPTION_LENGTH)
+                    {
                         throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+
                     _caption = value;
                 }
             }
@@ -834,7 +889,10 @@ namespace PoshCode.Interop
                 set
                 {
                     if (value.Length > NativeMethods.CREDUI_MAX_MESSAGE_LENGTH)
+                    {
                         throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+
                     _message = value;
                 }
             }
@@ -847,11 +905,20 @@ namespace PoshCode.Interop
             public PromptForCredentialsOptions(string targetName, string caption, string message)
             {
                 if (targetName == null)
+                {
                     targetName = string.Empty; // new ArgumentNullException(nameof(targetName));
+                }
+
                 if (string.IsNullOrEmpty(caption))
+                {
                     throw new ArgumentNullException(nameof(caption));
+                }
+
                 if (string.IsNullOrEmpty(message))
+                {
                     throw new ArgumentNullException(nameof(message));
+                }
+
                 TargetName = targetName;
                 Caption = caption;
                 Message = message;
@@ -1094,11 +1161,19 @@ namespace PoshCode.Interop
                 finally
                 {
                     if (userNamePtr != IntPtr.Zero)
+                    {
                         Marshal.ZeroFreeCoTaskMemUnicode(userNamePtr);
+                    }
+
                     if (domainNamePtr != IntPtr.Zero)
+                    {
                         Marshal.ZeroFreeCoTaskMemUnicode(domainNamePtr);
+                    }
+
                     if (passwordPtr != IntPtr.Zero)
+                    {
                         Marshal.ZeroFreeCoTaskMemUnicode(passwordPtr);
+                    }
                 }
             }
 
@@ -1111,7 +1186,10 @@ namespace PoshCode.Interop
                 {
                     var c = (char)Marshal.ReadInt16(p, ((i++) * sizeof(short)));
                     if (c == '\u0000')
+                    {
                         break;
+                    }
+
                     s.AppendChar(c);
                 }
                 s.MakeReadOnly();
@@ -1121,7 +1199,10 @@ namespace PoshCode.Interop
             {
                 var s = new SecureString();
                 for (var i = 0; i < length; i++)
+                {
                     s.AppendChar((char)Marshal.ReadInt16(p, i * sizeof(short)));
+                }
+
                 s.MakeReadOnly();
                 return s;
             }
@@ -1147,7 +1228,10 @@ namespace PoshCode.Interop
         
         public static implicit operator PSCredential(PromptCredentialsResult credentials)
         {
-            if (string.IsNullOrEmpty(credentials?.UserName)) return null;
+            if (string.IsNullOrEmpty(credentials?.UserName))
+            {
+                return null;
+            }
 
             return new PSCredential(string.IsNullOrEmpty(credentials.DomainName) ? credentials.UserName : $"{credentials.DomainName}\\{credentials.UserName}", credentials.Password?.ConvertToSecureString());
         }
@@ -1164,7 +1248,10 @@ namespace PoshCode.Interop
 
         public static implicit operator PSCredential(PromptCredentialsSecureStringResult credentialsSecureStringResult)
         {
-            if (credentialsSecureStringResult == null) return null;
+            if (credentialsSecureStringResult == null)
+            {
+                return null;
+            }
 
             var userName = credentialsSecureStringResult.DomainName != null && credentialsSecureStringResult.DomainName.Length > 0
                             ? credentialsSecureStringResult.UserName.ConvertToString()

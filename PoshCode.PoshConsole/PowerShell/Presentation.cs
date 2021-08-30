@@ -111,7 +111,11 @@ namespace PoshWpf
         {
             get
             {
-                if (IsError) throw Error;
+                if (IsError)
+                {
+                    throw Error;
+                }
+
                 return DialogResult;
             }
         }
@@ -198,7 +202,10 @@ namespace PoshWpf
 
             windowArgs.InitHandle.WaitOne();
 
-            if (windowArgs.InitException != null) throw windowArgs.InitException;
+            if (windowArgs.InitException != null)
+            {
+                throw windowArgs.InitException;
+            }
 
             return windowArgs.AsyncResult;
 
@@ -208,7 +215,9 @@ namespace PoshWpf
         public static PresentationResult Stop(WindowDispatcherAsyncResult asyncResult)
         {
             if (asyncResult == null)
+            {
                 throw new ArgumentNullException(nameof(asyncResult));
+            }
 
             asyncResult.AsyncWaitHandle.WaitOne();
             return asyncResult.Result;

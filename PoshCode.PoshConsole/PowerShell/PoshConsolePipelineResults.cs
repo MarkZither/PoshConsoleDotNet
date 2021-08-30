@@ -32,7 +32,10 @@ namespace PoshCode.PowerShell
 
         public IEnumerable<KeyValuePair<string, Exception>> GetExceptions()
         {
-            if (!HadErrors) return new KeyValuePair<string, Exception>[0];
+            if (!HadErrors)
+            {
+                return new KeyValuePair<string, Exception>[0];
+            }
 
             return Errors.Select(AsException);
         }

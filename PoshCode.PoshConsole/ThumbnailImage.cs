@@ -328,9 +328,14 @@ namespace PoshCode.Controls
             // our preferred size is the thumbnail source size
             // if less space is available, we scale appropriately
             if (size.Width > constraint.Width)
+            {
                 scale = constraint.Width / size.Width;
+            }
+
             if (size.Height > constraint.Height)
+            {
                 scale = Math.Min(scale, constraint.Height / size.Height);
+            }
 
             return new Size(size.Width * scale, size.Height * scale);
         }

@@ -20,7 +20,10 @@ namespace PoshCode.Wpf
             {
                 var bindingExpression = value as BindingExpression;
                 if (bindingExpression == null)
+                {
                     throw new ArgumentException("Invalid value, can't convert to BindingExpression", nameof(value));
+                }
+
                 return bindingExpression.ParentBinding;
             }
 

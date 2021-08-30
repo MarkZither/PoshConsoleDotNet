@@ -300,9 +300,11 @@ namespace PoshCode.PowerShell
                 _control.ClearScreen();
             }
             else
+            {
 
                 // TODO: REIMPLEMENT PSHostRawUserInterface.SetBufferContents(Rectangle rectangle, BufferCell fill)
                 throw new NotImplementedException("The SetBufferContents method is not (yet) implemented!");
+            }
             //if (_control.Dispatcher.CheckAccess())
             // {
             //     _control.SetBufferContents(rectangle, fill);

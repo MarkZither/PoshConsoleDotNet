@@ -23,9 +23,14 @@ namespace PoshWpf.Utility
         internal static ICollection<PSObject> Invoke(ScriptBlock sb, PSVariable[] variables, params object[] args)
         {
             if (variables == null)
+            {
                 throw new ArgumentNullException(nameof(variables));
+            }
 
-            foreach (var v in variables) SetScriptVariable(v);
+            foreach (var v in variables)
+            {
+                SetScriptVariable(v);
+            }
 
             if (_module != null)
             {
@@ -132,7 +137,9 @@ namespace PoshWpf.Utility
         internal static void SetScriptVariableValue(string name, object value)
         {
             if (_module != null)
+            {
                 _module.SessionState.PSVariable.Set(name, value);
+            }
         }
 
 

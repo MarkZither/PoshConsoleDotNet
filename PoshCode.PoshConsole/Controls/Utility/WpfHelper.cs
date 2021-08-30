@@ -53,7 +53,11 @@ namespace PoshCode.Controls.Utility
           where T : DependencyObject
         {
             var element = reference.InputHitTest(point) as DependencyObject;
-            if (element == null) return null;
+            if (element == null)
+            {
+                return null;
+            }
+
             return element as T ?? TryFindParent<T>(element);
         }
 
@@ -71,7 +75,11 @@ namespace PoshCode.Controls.Utility
             DependencyObject parent = VisualTreeHelper.GetParent(child);
             while (parent != null)
             {  // If the parent is the right type, return it.
-                if (parent is T) break;
+                if (parent is T)
+                {
+                    break;
+                }
+
                 parent = VisualTreeHelper.GetParent(parent);
             }
             // we reached the root of the tree without finding it

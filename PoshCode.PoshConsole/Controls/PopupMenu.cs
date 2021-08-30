@@ -195,7 +195,10 @@ namespace PoshCode.Controls
                 {
                     _intelliNum *= 10;
                 }
-                else _intelliNum = 0;
+                else
+                {
+                    _intelliNum = 0;
+                }
 
                 _intelliNum += int.Parse(e.Text);
                 if (_intelliNum > 0 && _intelliNum < _intellisense.Items.Count - 1)
@@ -247,7 +250,10 @@ namespace PoshCode.Controls
         /// <param name="ea">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         void ClosedTabComplete(object sender, EventArgs ea)
         {
-            if (_tabbing == null || !IsParentActive()) return;
+            if (_tabbing == null || !IsParentActive())
+            {
+                return;
+            }
 
             var cmd = _console.CurrentCommand;
             if (_intellisense.SelectedValue != null)
@@ -291,7 +297,11 @@ namespace PoshCode.Controls
                 _intellisense.Items.Filter = null;
                 for (int i = text.Count - 1; i >= 0; i--)
                 {
-                    if (filterDupes && _intellisense.Items.Contains(text[i])) continue;
+                    if (filterDupes && _intellisense.Items.Contains(text[i]))
+                    {
+                        continue;
+                    }
+
                     var item = new ListBoxItem
                     {
                         Content = $"{i,2} {text[i]}",

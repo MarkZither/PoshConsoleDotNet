@@ -115,37 +115,84 @@ namespace PoshCode.Controls
         public static ConsoleColor ConsoleColorFromBrush(Brush color)
         {
             if (Equals(color, Black))
+            {
                 return ConsoleColor.Black;
+            }
+
             if (Equals(color, Blue))
+            {
                 return ConsoleColor.Blue;
+            }
+
             if (Equals(color, Cyan))
+            {
                 return ConsoleColor.Cyan;
+            }
+
             if (Equals(color, DarkBlue))
+            {
                 return ConsoleColor.DarkBlue;
+            }
+
             if (Equals(color, DarkCyan))
+            {
                 return ConsoleColor.DarkCyan;
+            }
+
             if (Equals(color, DarkGray))
+            {
                 return ConsoleColor.DarkGray;
+            }
+
             if (Equals(color, DarkGreen))
+            {
                 return ConsoleColor.DarkGreen;
+            }
+
             if (Equals(color, DarkMagenta))
+            {
                 return ConsoleColor.DarkMagenta;
+            }
+
             if (Equals(color, DarkRed))
+            {
                 return ConsoleColor.DarkRed;
+            }
+
             if (Equals(color, DarkYellow))
+            {
                 return ConsoleColor.DarkYellow;
+            }
+
             if (Equals(color, Gray))
+            {
                 return ConsoleColor.Gray;
+            }
+
             if (Equals(color, Green))
+            {
                 return ConsoleColor.Green;
+            }
+
             if (Equals(color, Magenta))
+            {
                 return ConsoleColor.Magenta;
+            }
+
             if (Equals(color, Red))
+            {
                 return ConsoleColor.Red;
+            }
+
             if (Equals(color, White))
+            {
                 return ConsoleColor.White;
+            }
+
             if (Equals(color, Yellow))
+            {
                 return ConsoleColor.Yellow;
+            }
 
             return ConsoleColor.White;
         }

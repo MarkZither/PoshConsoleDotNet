@@ -23,7 +23,8 @@ namespace PoshCode.Controls
       void _passwordBox_PreviewKeyDown(object sender, KeyEventArgs e)
       {
          if (WaitingForInput)
-            switch (e.Key)
+            {
+                switch (e.Key)
             {
                case Key.Enter:
                   {
@@ -47,7 +48,8 @@ namespace PoshCode.Controls
                   }
                   break;
             }
-      }
+            }
+        }
 
       /// <summary>
       /// Lets us intercept special keys for the control
@@ -124,8 +126,10 @@ namespace PoshCode.Controls
          {
             CurrentCommand = _cmdHistory.Next(CurrentCommand);
             if (!e.IsModifierOn(ModifierKeys.Control))
-               e.Handled = true;
-         }
+                {
+                    e.Handled = true;
+                }
+            }
       }
 
       private void OnUpPressed(KeyEventArgs e)
@@ -134,8 +138,10 @@ namespace PoshCode.Controls
          {
             CurrentCommand = _cmdHistory.Previous(CurrentCommand);
             if(!e.IsModifierOn(ModifierKeys.Control))
-               e.Handled = true;
-         }
+                {
+                    e.Handled = true;
+                }
+            }
       }
 
       private void OnPageDownPressed(KeyEventArgs e)
@@ -160,8 +166,11 @@ namespace PoshCode.Controls
          if (Selection == null || Selection.Text.Length == 0) {
             // if they didn't select anything, they were just clicking
             // Put the focus where it belongs
-            if (!_popup.IsOpen) _commandContainer.Child.Focus();
-         } 
+            if (!_popup.IsOpen)
+                {
+                    _commandContainer.Child.Focus();
+                }
+            } 
          else if (Settings.Default.CopyOnMouseSelect) {
             try
             {
@@ -287,9 +296,12 @@ namespace PoshCode.Controls
 
       protected override void OnPreviewTextInput(TextCompositionEventArgs e)
       {
-         if (!_popup.IsOpen) _commandContainer.Child.Focus(); // Notice this is "whichever" is active ;)
-         //_commandBox.RaiseEvent(e);
-         base.OnPreviewTextInput(e);
+         if (!_popup.IsOpen)
+            {
+                _commandContainer.Child.Focus(); // Notice this is "whichever" is active ;)
+            }
+            //_commandBox.RaiseEvent(e);
+            base.OnPreviewTextInput(e);
       }
 
       // TODO: change this to handle with the Tokenizer

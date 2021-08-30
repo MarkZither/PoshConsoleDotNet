@@ -90,7 +90,11 @@ namespace PoshCode
         {
             get
             {
-                if (RootWindow == null) return null;
+                if (RootWindow == null)
+                {
+                    return null;
+                }
+
                 return _progressPanel ?? (_progressPanel = RootWindow.FindName(Progress) as Panel);
             }
         }
@@ -100,7 +104,11 @@ namespace PoshCode
         {
             get
             {
-                if (RootWindow == null) return null;
+                if (RootWindow == null)
+                {
+                    return null;
+                }
+
                 return _contentControl ?? (_contentControl = RootWindow.FindName(Content) as Panel);
             }
         }
@@ -236,9 +244,14 @@ namespace PoshCode
             }
 
             if (!string.IsNullOrEmpty(e.Caption))
+            {
                 Write(e.Caption + "\n");
+            }
+
             if (!string.IsNullOrEmpty(e.Message))
+            {
                 Write(e.Message + "\n");
+            }
 
             var results = new Dictionary<string, PSObject>();
             foreach (var fd in e.Descriptions)
@@ -255,13 +268,19 @@ namespace PoshCode
                     do
                     {
                         PSObject single = GetSingle(e.Caption, e.Message, $"{prompt}[{count++}]", fd, type);
-                        if (single == null) break;
+                        if (single == null)
+                        {
+                            break;
+                        }
 
                         if (!(single.BaseObject is string) || ((string)single.BaseObject).Length > 0)
                         {
                             output.Add(single);
                         }
-                        else break;
+                        else
+                        {
+                            break;
+                        }
                     } while (true);
 
                     results[fd.Name] = PSObject.AsPSObject(output.ToArray());
@@ -270,7 +289,10 @@ namespace PoshCode
                 {
                     var value = GetSingle(e.Caption, e.Message, prompt, fd, type);
 
-                    if (value != null) results[fd.Name] = value;
+                    if (value != null)
+                    {
+                        results[fd.Name] = value;
+                    }
                 }
 
             }
@@ -291,7 +313,9 @@ namespace PoshCode
             {
                 // TODO: Only show the help message if they type '?' as their entry something, in which case show help and re-prompt.
                 if (!String.IsNullOrEmpty(help))
+                {
                     Write(ConsoleBrushes.ConsoleColorFromBrush(ConsoleBrushes.VerboseForeground), ConsoleBrushes.ConsoleColorFromBrush(ConsoleBrushes.VerboseBackground), help + "\n");
+                }
 
                 Write($"{prompt}: ");
 
@@ -344,7 +368,10 @@ namespace PoshCode
                     {
                         return PSObject.AsPSObject(String.Empty);
                     }
-                    else return PSObject.AsPSObject(userData);
+                    else
+                    {
+                        return PSObject.AsPSObject(userData);
+                    }
                 }
             }
         }
@@ -393,14 +420,18 @@ namespace PoshCode
 
                 // If the choice string was empty, use the default selection.
                 if (data.Length == 0)
+                {
                     return e.SelectedIndex;
+                }
 
                 // See if the selection matched and return the
                 // corresponding index if it did...
                 for (var i = 0; i < e.Choices.Count; i++)
                 {
                     if (promptData[0, i][0] == data[0])
+                    {
                         return i;
+                    }
                 }
 
                 // If they picked the very last thing in the list, they want help
@@ -493,7 +524,10 @@ namespace PoshCode
             if (fragments.Length == 2)
             {
                 if (fragments[1].Length > 0)
+                {
                     result[0] = fragments[1][0].ToString().ToUpper();
+                }
+
                 result[1] = (fragments[0] + fragments[1]).Trim();
             }
             else

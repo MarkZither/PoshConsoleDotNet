@@ -51,7 +51,9 @@ namespace PoshCode.Controls
             if (_command != currentCommand || (_choices == null || _choices.CompletionMatches.Count == 0) && (_command == null || _command != currentCommand))
             {
                 if (TabComplete == null)
+                {
                     return null;
+                }
 
                 _command = currentCommand;
                 _choices = TabComplete(currentCommand, cursorIndex);
