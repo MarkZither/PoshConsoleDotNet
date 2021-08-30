@@ -63,10 +63,14 @@ namespace PoshCode.PowerShell
             if (Settings.Default.UseCredentialUI)
             {
                 if (string.IsNullOrEmpty(caption))
+                {
                     caption = "Windows PowerShell credential request";
+                }
 
                 if (string.IsNullOrEmpty(message))
+                {
                     message = "Please enter your credentials";
+                }
 
                 var pfwCredentialsOptions = new CredentialUI.PromptForWindowsCredentialsOptions(caption, message)
                 {

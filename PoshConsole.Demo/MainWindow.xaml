@@ -7,7 +7,7 @@
                      xmlns:system="clr-namespace:System;assembly=mscorlib"
                      xmlns:poshCode="http://schemas.poshcode.org/wpf/poshcode"
                      x:Class="PoshConsole.Demo.MainWindow"
-                     mc:Ignorable="d" DontUseDwm="False"
+                     mc:Ignorable="d"
                      Title="MainWindow" 
                      Height="517" Width="774"
                      MinHeight="60" MinWidth="80" 

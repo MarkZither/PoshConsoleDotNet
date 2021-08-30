@@ -43,9 +43,6 @@ namespace PoshCode.PowerShell
 
 
         protected InitialSessionState InitialSessionState => _runSpace.InitialSessionState;
-
-        protected RunspaceConfiguration RunspaceConfiguration => _runSpace.RunspaceConfiguration;
-
         protected RunspaceStateInfo RunspaceStateInfo => _runSpace.RunspaceStateInfo;
 
         private readonly Host _host;
@@ -84,7 +81,7 @@ namespace PoshCode.PowerShell
             }
 
             // We need STA so we can do WPF stuff from our console thread.
-            iss.ApartmentState = ApartmentState.STA;
+            // TODO: iss.ApartmentState = ApartmentState.STA;
             // We need ReuseThread so that we behave the way that PowerShell.exe and ISE do.
             iss.ThreadOptions = PSThreadOptions.ReuseThread;
             // iss.Variables
@@ -256,19 +253,26 @@ namespace PoshCode.PowerShell
         {
             PoshConsole.CurrentConsole.NewParagraph();
             var pipeline = _runSpace.CreatePipeline("Prompt");
-            var output = pipeline.Invoke();
-
-            // NOTE: The default host doesn't write errors for prompt functions
-
-            var str = new StringBuilder();
-
-            foreach (var obj in output)
+            try
             {
-                str.Append(obj);
-            }
+                var output = pipeline.Invoke();
 
-            var prompt = str.ToString();
-            PoshConsole.CurrentConsole.SetPrompt(prompt);
+                // NOTE: The default host doesn't write errors for prompt functions
+
+                var str = new StringBuilder();
+
+                foreach (var obj in output)
+                {
+                    str.Append(obj);
+                }
+
+                var prompt = str.ToString();
+                PoshConsole.CurrentConsole.SetPrompt(prompt);
+            }
+            catch(Exception ex)
+            {
+                PoshConsole.CurrentConsole.SetPrompt("prompt");
+            }
         }
 
         private Pipeline GetPowerShellPipeline(PoshConsolePipeline boundCommand)

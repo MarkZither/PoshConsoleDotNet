@@ -1,208 +1,58 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8135F268-594F-4536-A0A6-1B63923811F8}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PoshCode</RootNamespace>
-    <AssemblyName>PoshCode.PoshConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net5.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AssemblyTitle>PoshConsole</AssemblyTitle>
+    <Company>PoshCode.com</Company>
+    <Product>PoshCode.PoshConsole</Product>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Description>The PoshConsole Control for hosting PowerShell in WPF</Description>
+    <Copyright>Copyright (c) Joel Bennett, 2015</Copyright>
+    <Version>0.8.5.0</Version>
+    <AssemblyVersion>0.8.5.0</AssemblyVersion>
+    <FileVersion>0.8.5.0</FileVersion>
     <CodeAnalysisRuleSet>..\PoshCodeRules.ruleset</CodeAnalysisRuleSet>
+    <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
+    <Authors>PoshCode.com</Authors>
+    <PackageLicenseUrl>https://github.com/Jaykul/PoshConsole/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Jaykul/PoshConsole/</PackageProjectUrl>
+    <PackageReleaseNotes>
+      Fix #6 History Bug
+    </PackageReleaseNotes>
+    <PackageTags>PowerShell WPF Hosting</PackageTags>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisRuleSet>..\PoshCodeRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>..\PoshCodeRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\$(Configuration)</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>..\PoshCodeRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>..\PoshCodeRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\$(Configuration)</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>..\PoshCodeRules.ruleset</CodeAnalysisRuleSet>
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Compile Remove="Commands\PowerShellRoutedCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\NewParagraphCommand.cs" />
-    <Compile Include="Commands\OutPoshConsoleCommand.cs" />
-    <Compile Include="Commands\ScriptBlockBaseCommand.cs" />
-    <Compile Include="Commands\Tee-Default.cs" />
-    <Compile Include="Controls\ColorInverter.cs" />
-    <Compile Include="Controls\ConsoleBrushes.cs" />
-    <Compile Include="Controls\ConsoleControl.cs" />
-    <Compile Include="Controls\ConsoleControl\ConsoleControl.BufferSize.cs" />
-    <Compile Include="Controls\ConsoleControl\ConsoleControl.CommandHandlers.cs" />
-    <Compile Include="Controls\ConsoleControl\ConsoleControl.EventHandlers.cs" />
-    <Compile Include="Controls\ConsoleControl\ConsoleControl.IPSConsoleControl.cs" />
-    <Compile Include="Controls\ConsoleControl\ConsoleControl.IPSXamlConsole.cs" />
-    <Compile Include="Controls\ConsoleControl\History.cs" />
-    <Compile Include="Controls\ConsoleControl\TabExpansion.cs" />
-    <Compile Include="Controls\ImageButton.cs" />
-    <Compile Include="Controls\ImageToggleButton.cs" />
-    <Compile Include="Controls\Interfaces\CompatabilityInterfaces.cs" />
-    <Compile Include="Controls\Interfaces\IConsoleControl.cs" />
-    <Compile Include="Controls\PopupMenu.cs" />
-    <Compile Include="Controls\PromptForChoiceEventArgs.cs" />
-    <Compile Include="Controls\PromptForObjectEventArgs.cs" />
-    <Compile Include="Controls\Utility\WpfHelper.cs" />
-    <Compile Include="Interop\CredentialUI.cs" />
-    <Compile Include="Interop\KeyboardHelper.cs" />
-    <Compile Include="Interop\NativeMethods.cs" />
-    <Compile Include="IRichConsole.cs" />
-    <Compile Include="PoshConsole.cs" />
-    <Compile Include="PowerShell\PoshConsolePipeline.cs" />
-    <Compile Include="PowerShell\Host.cs" />
-    <Compile Include="PowerShell\HostRawUI.cs" />
-    <Compile Include="PowerShell\HostUI.cs" />
-    <Compile Include="PowerShell\Options.cs" />
-    <Compile Include="PowerShell\PoshConsolePipelineResults.cs" />
-    <Compile Include="PowerShell\PipelineHelper.cs" />
-    <Compile Include="PowerShell\Presentation.cs" />
-    <Compile Include="PowerShell\RunspaceProxy.cs" />
-    <Compile Include="Native\NativeConsole.cs" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.4" />
+    <PackageReference Include="System.Management.Automation" Version="7.1.4" />
+    <PackageReference Include="System.Threading.Tasks.Dataflow" Version="4.9.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PowerShell\ScriptBlockInvoker.cs" />
-    <Compile Include="PowerShell\SessionStateHelper.cs" />
-    <Compile Include="PowerShell\SyncEvents.cs" />
-    <Compile Include="ProgressPanel.xaml.cs">
-      <DependentUpon>ProgressPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ThumbnailImage.cs" />
-    <Compile Include="Utility\KeyboardHelper.cs" />
-    <Compile Include="Utility\StringHelper.cs" />
-    <Compile Include="Wpf\BindingConverter.cs" />
-    <Compile Include="Wpf\BindingCustomTypeDescriptor.cs" />
-    <Compile Include="Wpf\BindingTypeDescriptionProvider.cs" />
-    <Compile Include="Wpf\XamlHelper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Colors.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Colors.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
-    <None Include="PoshCode.PoshConsole.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Colors.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Colors.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XamlTemplates\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="ProgressPanel.xaml">
+    <None Update="ProgressPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="themes\generic.xaml">
+    </None>
+    <None Update="themes\generic.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    </None>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Windows.Controls.Image" />
+    <Import Include="System.Windows.Point" />
+    <Import Include="System.Windows.Size" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Threading" />
+  </ItemGroup>
 </Project>

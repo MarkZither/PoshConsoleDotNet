@@ -4,3 +4,6 @@ bin/
 *.nupkg
 /.vs/PoshConsole/v16/Server/sqlite3
 /.vs/PoshConsole/v16
+/.vs/PoshConsole/DesignTimeBuild
+/PoshConsole.Demo/PoshConsole.Demo.csproj.user
+/PoshCode.PoshConsole/PoshCode.PoshConsole.csproj.user

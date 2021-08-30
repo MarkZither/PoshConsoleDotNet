@@ -31,12 +31,16 @@ namespace PoshWpf.Utility
                     {
                         _moduleBase = Environment.GetEnvironmentVariable("PSModulePath");
                         if (!String.IsNullOrEmpty(_moduleBase))
+                        {
                             _moduleBase = _moduleBase.Split(new[] { ';' }, 2).FirstOrDefault();
+                        }
                     }
                     if (String.IsNullOrEmpty(_moduleBase))
                     {
                         var name = MyInvocation.MyCommand.Name;
-                        _moduleBase = (from cmdlet in Runspace.DefaultRunspace.RunspaceConfiguration.Cmdlets
+                        InitialSessionState runspaceConfiguration = InitialSessionState.Create();
+                        
+                        _moduleBase = (from cmdlet in runspaceConfiguration.Commands
                                        where cmdlet.Name.Equals(name)
                                        select cmdlet.PSSnapIn.ApplicationBase).FirstOrDefault();
                     }
@@ -151,7 +155,9 @@ namespace PoshWpf.Utility
                     {
                         _moduleBase = Environment.GetEnvironmentVariable("PSModulePath");
                         if (!String.IsNullOrEmpty(_moduleBase))
+                        {
                             _moduleBase = _moduleBase.Split(new[] { ';' }, 2).FirstOrDefault();
+                        }
                     }
 
                 }

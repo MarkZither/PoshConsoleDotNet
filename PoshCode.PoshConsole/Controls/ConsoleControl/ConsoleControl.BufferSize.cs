@@ -75,7 +75,8 @@ namespace PoshCode.Controls
             {
                 return new Size(
                     (int)Math.Floor(((ScrollViewer.ExtentWidth - (Padding.Left + Padding.Right)) / ((Zoom / 100.0) * _characterWidth))),
-                    (int)Math.Floor(ScrollViewer.ExtentHeight / (Double.IsNaN(Document.LineHeight) ? Document.FontSize : Document.LineHeight) * (Zoom / 100.0)));
+                    (int)Math.Floor(ScrollViewer.ExtentHeight / (Double.IsNaN(Document.LineHeight) ? Document.FontSize : Document.LineHeight) * (Zoom / 100.0))
+                    );
             }
             set
             {
@@ -95,7 +96,8 @@ namespace PoshCode.Controls
             {
                 return new Size(
                     (int)Math.Floor(((ScrollViewer.ExtentWidth - (Padding.Left + Padding.Right)) / ((Zoom / 100.0) * _characterWidth))),
-                    (int)Math.Floor(ScrollViewer.ViewportHeight / (Double.IsNaN(Document.LineHeight) ? Document.FontSize : Document.LineHeight) * (Zoom / 100.0)));
+                    (int)Math.Floor(ScrollViewer.ViewportHeight / (Double.IsNaN(Document.LineHeight) ? Document.FontSize : Document.LineHeight) * (Zoom / 100.0))
+                    );
 
             }
             set
@@ -146,7 +148,8 @@ namespace PoshCode.Controls
             {
                 Rect caret = (_commandContainer.Child.IsFocused) ? // Document.ContentEnd
                    Current.ElementEnd.GetCharacterRect(LogicalDirection.Backward) :
-                   Selection.End.GetCharacterRect(LogicalDirection.Backward);
+                   Current.ElementEnd.GetCharacterRect(LogicalDirection.Backward);
+                   //Selection.End.GetCharacterRect(LogicalDirection.Backward);
 
                 _cursorPosition.X = (int)((caret.Left + ScrollViewer.ContentHorizontalOffset) * _characterWidth);
                 _cursorPosition.Y = (int)((caret.Top + ScrollViewer.ContentVerticalOffset) / (Double.IsNaN(Document.LineHeight) ? Document.FontSize : Document.LineHeight));
