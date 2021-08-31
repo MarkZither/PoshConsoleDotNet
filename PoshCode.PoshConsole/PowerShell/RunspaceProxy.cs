@@ -101,6 +101,10 @@ namespace PoshCode.PowerShell
             // And pre-import the modules from our app's module folder
             var path = Path.GetDirectoryName(poshModule.Location);
             iss.ImportPSModulesFromPath(Path.Combine(path, "Modules"));
+            foreach (var item in new DirectoryInfo(Path.Combine(path, "Modules")).GetFiles())
+            {
+                iss.LoadCmdlets(Assembly.LoadFile(item.FullName));
+            }
 
             var profile = new PSObject(Path.GetFullPath(Path.Combine(currentUserProfilePath, _host.Name + "_profile.ps1")));
             //* %windir%\system32\WindowsPowerShell\v1.0\profile.ps1
