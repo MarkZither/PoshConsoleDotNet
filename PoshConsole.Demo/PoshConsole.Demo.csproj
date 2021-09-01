@@ -38,5 +38,8 @@
     <None Update="Modules\PoshConsole.Demo.ModuleNet48.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Modules\PoshConsole.Demo.ModuleNet50.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
