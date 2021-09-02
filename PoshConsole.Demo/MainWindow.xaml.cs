@@ -244,13 +244,13 @@ namespace PoshConsole.Demo
 
         async void Capture_Click(object sender, RoutedEventArgs e)
         {
-            var files = await PoshConsole.InvokeAsync(new Command("Get-ChildItem"));
+            var files = await PoshConsole.InvokeAsync(new Command("Test-Tls"));
             Dispatcher.Invoke(() => MainContent.DataContext = files.Output);
         }
 
         async void Secret_Click(object sender, RoutedEventArgs e)
         {
-            var processes = await PoshConsole.InvokeAsync("Get-Process | Select -First 25", output: ConsoleOutput.None);
+            var processes = await PoshConsole.InvokeAsync(new Command("Test-ActiveDirectory"), output: ConsoleOutput.None);
             Dispatcher.Invoke(() => MainContent.DataContext = processes.Output);
         }
 

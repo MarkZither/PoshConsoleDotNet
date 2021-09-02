@@ -186,9 +186,8 @@
                 </fluent:RibbonGroupBox>
 
                 <fluent:RibbonGroupBox Header="Invocation Methods" x:Name="InvokeGroup">
-                    <fluent:Button Header="Capture Example" Click="Capture_Click" />
-
-                    <fluent:Button Header="Secret Example" Click="Secret_Click" />
+                    <fluent:Button Header="Test Tls" Click="Capture_Click" />
+                    <fluent:Button Header="Test Active Directory" Click="Secret_Click" />
                     <fluent:Button Header="Console Example" Click="Console_Click" />
                     <fluent:Button Header="Error Example" Click="Error_Click" />
                     <fluent:Button Header="Exception Example" Click="Exception_Click" />

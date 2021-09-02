@@ -12,6 +12,7 @@ namespace PoshConsole.Demo.ModuleNet50
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
+            WriteObject("Testing Forest!");
             TestForest();
         }
 
